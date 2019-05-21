@@ -1,0 +1,44 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.example.org/SuperHero"
+    xmlns:tns="http://www.example.org/SuperHero"
+    elementFormDefault="qualified">
+    
+    <!-- Represent the payload a request to the getHero operation -->
+    <xs:element name="getHeroRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="name" type="xs:string"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <!-- Represent the payload of a response from getHero operations -->
+    <xs:element name="getHeroResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="SuperHero" type="tns:SuperHero"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="SuperHero">
+    	<xs:sequence>
+    		<xs:element name="name" type="xs:string"></xs:element>
+    		<xs:element name="superPower" type="tns:superPower"></xs:element>
+    		<xs:element name="weakness" type="tns:superPower"></xs:element>
+    		<xs:element name="powerLevel" type="xs:int"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="superPower">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="SuperStrength"></xs:enumeration>
+    		<xs:enumeration value="Invisibility"></xs:enumeration>
+    		<xs:enumeration value="Flight"></xs:enumeration>
+    		<xs:enumeration value="MindReader"></xs:enumeration>
+    		<xs:enumeration value="Telekinesis"></xs:enumeration>
+    	</xs:restriction>
+    </xs:simpleType>
+    
+    
+</xs:schema>
